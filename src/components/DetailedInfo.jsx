@@ -46,7 +46,7 @@ function DetailedInfo(props) {
   } = useSelector((state) => state.movieReducer);
 
   // console.log(contentDetailed, similarcontent, recommendedcontent, contentid);
-  // console.log(recommendedcontent);
+  console.log(credits);
 
   function ratingnum() {
     let rp = (Number(data.vote_average) / 10) * 100;
@@ -152,12 +152,12 @@ function DetailedInfo(props) {
   }
   return (
     <div
-      className='w-full h-full bg-fixed bg-top bg-no-repeat bg-cover '
+      className='w-full h-full bg-fixed bg-top bg-no-repeat bg-cover'
       style={{
         backgroundImage: `url(${img_base_path}${contentDetailed.backdrop_path})`,
       }}
     >
-      <div className='w-full h-full bg-black/70'>
+      <div className='w-full h-full bg-black/70 pt-20'>
         <div className='flex py-10 items-center justify-start gap-10 px-20 w-full'>
           <div className='w-96'>
             <img
@@ -258,7 +258,11 @@ function DetailedInfo(props) {
           </div>
         </div>
         <div className='w-10/12 mx-auto py-20'>
-          <h2 className='text-3xl text-white ml-8 py-6'>CAST</h2>
+          {credits.cast ? (
+            <h2 className='text-3xl text-white ml-8 py-6'>CAST</h2>
+          ) : (
+            ""
+          )}
           <Swiper
             className=''
             modules={[Navigation, Pagination]}

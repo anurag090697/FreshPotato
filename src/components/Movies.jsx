@@ -37,7 +37,7 @@ function Movies() {
   };
   if (status === "loading") {
     return (
-      <div className='flex flex-wrap gap-6 items-center justify-center'>
+      <div className='flex flex-wrap gap-6 items-center justify-center text-transparent pt-28'>
         <ContentCardSkeleton></ContentCardSkeleton>
         <ContentCardSkeleton></ContentCardSkeleton>
         <ContentCardSkeleton></ContentCardSkeleton>
@@ -60,16 +60,15 @@ function Movies() {
     );
   }
   return (
-    <div>
+    <div className='pt-20'>
       <h1 className='text-4xl text-white text-center py-10'>MOVIES</h1>
       <InfiniteScroll
         style={{ overflow: "visible" }}
         dataLength={data.length}
         next={fetchMoreData}
         hasMore={currentPage < pages}
-        
         loader={
-          <div className='flex flex-wrap gap-4 items-center justify-center'>
+          <div className='flex flex-wrap gap-4 items-center justify-center text-transparent'>
             <ContentCardSkeleton></ContentCardSkeleton>
             <ContentCardSkeleton></ContentCardSkeleton>
             <ContentCardSkeleton></ContentCardSkeleton>
@@ -81,9 +80,29 @@ function Movies() {
           </div>
         }
         endMessage={
-          <p className='text-center text-red-600 text-2xl py-10'>
-            No more Movies to display
-          </p>
+          status === "loading" && !movies ? (
+            <div className='flex flex-wrap gap-4 items-center justify-center text-transparent'>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+            </div>
+          ) : (
+            <div
+              className={`text-center text-red-600 text-2xl py-10${
+                movies.length ? "" : "min-h-dvh"
+              }`}
+            >
+              No more TV shows to display
+            </div>
+          )
         }
       >
         <div className='flex gap-6 flex-wrap items-center justify-center px-20'>

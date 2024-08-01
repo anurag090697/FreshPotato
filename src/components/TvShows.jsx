@@ -43,7 +43,7 @@ function TvShows() {
   // }, [tvshows]);
   if (status === "loading") {
     return (
-      <div className='flex flex-wrap gap-4 items-center justify-center'>
+      <div className='flex flex-wrap gap-4 items-center justify-center text-transparent pt-28'>
         <ContentCardSkeleton></ContentCardSkeleton>
         <ContentCardSkeleton></ContentCardSkeleton>
         <ContentCardSkeleton></ContentCardSkeleton>
@@ -66,7 +66,7 @@ function TvShows() {
     );
   }
   return (
-    <div>
+    <div className='pt-20'>
       <h1 className='text-4xl text-white text-center py-10'>TV SHOWS</h1>
       <InfiniteScroll
         style={{ overflow: "visible" }}
@@ -83,9 +83,29 @@ function TvShows() {
           </div>
         }
         endMessage={
-          <div className='text-2xl text-center w-full text-red-500 py-20'>
-            No more TV shows to display
-          </div>
+          status === "loading" && !tvshows ? (
+            <div className='flex flex-wrap gap-4 items-center justify-center'>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+              <ContentCardSkeleton></ContentCardSkeleton>
+            </div>
+          ) : (
+            <div
+              className={`text-center text-red-600 text-2xl py-10${
+                tvshows.length ? "" : "min-h-dvh"
+              }`}
+            >
+              No more TV shows to display
+            </div>
+          )
         }
       >
         <div className='flex gap-6 flex-wrap items-center justify-center px-20'>

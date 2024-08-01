@@ -47,7 +47,7 @@ function Hero(props) {
   }
   return (
     <div
-      className=' w-full bg-cover bg-top Class
+      className=' w-full bg-cover bg-top Class 
 Properties
 bg-repeat	background-repeat: repeat;
 bg-no-repeat'
@@ -55,7 +55,7 @@ bg-no-repeat'
         backgroundImage: `url(${picslide ? picslide[picidx] : ""})`,
       }}
     >
-      <div className='flex flex-col w-full items-center px-8 text-center gap-10 bg-gradient-to-r from-indigo-900/50 to-violet-900/40 justify-center py-52 text-white'>
+      <div className='flex flex-col w-full items-center text-center gap-10 bg-gradient-to-r from-indigo-900/50 to-violet-900/40 justify-center py-52 text-white md:min-h-dvh'>
         <div>
           <h1 className='font-bold text-6xl'>Welcome.</h1>
           <p className='font-medium text-gray-300 text-2xl'>

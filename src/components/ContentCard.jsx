@@ -5,6 +5,7 @@ import xposter from "../../public/no-poster.png";
 import genere from "./genere.json";
 
 import { useNavigate } from "react-router-dom";
+import ContentCardSkeleton from "./CardSkeleton";
 // import ContentCardSkeleton from "./CardSkeleton";
 const img_base_path = "https://image.tmdb.org/t/p/original/";
 
@@ -59,9 +60,7 @@ function ContentCard(props) {
   }, [data]);
 
   function getgenere() {
-   
     let tm = data.genre_ids.map((ele, idx) => {
-     
       return idx < 2 ? (
         <div
           key={idx}
@@ -77,7 +76,7 @@ function ContentCard(props) {
   }
 
   if (!data) {
-    return <div>Loading</div>;
+    return <ContentCardSkeleton></ContentCardSkeleton>;
   }
   // console.log(data);
   return (
@@ -90,13 +89,16 @@ function ContentCard(props) {
       }
     >
       <div className='relative pb-8 '>
-        <img
-          className='rounded-lg'
-          src={
-            data.poster_path ? `${img_base_path}${data.poster_path}` : xposter
-          }
-          alt={data.title || data.name}
-        />
+        {" "}
+        <div className='h-[364px] overflow-hidden'>
+          <img
+            className='rounded-lg hover:scale-110'
+            src={
+              data.poster_path ? `${img_base_path}${data.poster_path}` : xposter
+            }
+            alt={data.title || data.name}
+          />
+        </div>
         {/* bg-[conic-gradient(from_0deg,var(--tw-gradient-stops))] from-green-500 from-${rating.precent}%  to-white to-${100 - rating.precent}% */}
         <div className='w-16 h-16 rounded-full bg-white p-1 absolute bottom-0 z-30'>
           <div

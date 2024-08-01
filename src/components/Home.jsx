@@ -35,7 +35,6 @@ function Home() {
   //   error
   // );
   useEffect(() => {
-
     dispatch(fetchTrendingContent());
     dispatch(fetchtopratedcontent());
     dispatch(fetchPopularContent());
@@ -50,7 +49,7 @@ function Home() {
 
   return (
     <div>
-      <Hero pictures={trendingday}></Hero>
+      <Hero pictures={[...trendingday, ...trendingweek]}></Hero>
       <ContentGroup
         heading={"Trending"}
         option1={"DAY"}

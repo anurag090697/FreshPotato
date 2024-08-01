@@ -55,7 +55,11 @@ function Header() {
     >
       <nav className='bg-gradient-to-r from-gray-500/50 to-cyan-500/50 w-full flex px-20 py-1 items-center justify-between text-2xl font-medium text-white '>
         <NavLink to='/'>
-          <img src={logo} alt='MovieFlix Logo' className='w-20 md:w-28' />
+          <img
+            src={logo}
+            alt='MovieFlix Logo'
+            className='w-20 md:w-28 animate-pulse hover:animate-none'
+          />
         </NavLink>
 
         <div className='flex items-center justify-between gap-8'>
