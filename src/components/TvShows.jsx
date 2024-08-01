@@ -10,7 +10,7 @@ import ContentCardSkeleton from "./CardSkeleton";
 function TvShows() {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
-  const { tvshows } = useSelector((state) => state.movieReducer);
+  const { tvshows, status, error } = useSelector((state) => state.movieReducer);
   const [pages, setPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -41,7 +41,30 @@ function TvShows() {
   //     console.log(data);
 
   // }, [tvshows]);
-
+  if (status === "loading") {
+    return (
+      <div className='flex flex-wrap gap-4 items-center justify-center'>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+      </div>
+    );
+  }
+  if (status === "failed") {
+    return (
+      <div className='min-h-dvh flex items-center justify-center w-full text-3xl text-violet-800'>
+        An Error Occured Try Again
+      </div>
+    );
+  }
   return (
     <div>
       <h1 className='text-4xl text-white text-center py-10'>TV SHOWS</h1>
@@ -51,8 +74,7 @@ function TvShows() {
         next={fetchMoreData}
         hasMore={currentPage < pages}
         loader={
-          <div className="flex flex-wrap gap-4 items-center justify-center">
-            <ContentCardSkeleton></ContentCardSkeleton>
+          <div className='flex flex-wrap gap-6 items-center justify-center'>
             <ContentCardSkeleton></ContentCardSkeleton>
             <ContentCardSkeleton></ContentCardSkeleton>
             <ContentCardSkeleton></ContentCardSkeleton>
@@ -61,7 +83,9 @@ function TvShows() {
           </div>
         }
         endMessage={
-          <p style={{ textAlign: "center" }}>No more TV shows to display</p>
+          <div className='text-2xl text-center w-full text-red-500 py-20'>
+            No more TV shows to display
+          </div>
         }
       >
         <div className='flex gap-6 flex-wrap items-center justify-center px-20'>

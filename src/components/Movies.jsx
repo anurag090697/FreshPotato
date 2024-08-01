@@ -10,7 +10,7 @@ import ContentCardSkeleton from "./CardSkeleton";
 function Movies() {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
-  const { movies, status } = useSelector((state) => state.movieReducer);
+  const { movies, status, error } = useSelector((state) => state.movieReducer);
   const [pages, setPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -35,11 +35,30 @@ function Movies() {
       dispatch(fetchmovies(currentPage + 1));
     }
   };
-  // useEffect(() => {
-  //   if (movies) {
-  //     console.log("Fetched TV Shows:", movies);
-  //   }
-  // }, [movies]);
+  if (status === "loading") {
+    return (
+      <div className='flex flex-wrap gap-6 items-center justify-center'>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+        <ContentCardSkeleton></ContentCardSkeleton>
+      </div>
+    );
+  }
+  if (status === "failed") {
+    return (
+      <div className='min-h-dvh flex items-center justify-center w-full text-3xl text-violet-800'>
+        An Error Occured Try Again
+      </div>
+    );
+  }
   return (
     <div>
       <h1 className='text-4xl text-white text-center py-10'>MOVIES</h1>
@@ -48,8 +67,11 @@ function Movies() {
         dataLength={data.length}
         next={fetchMoreData}
         hasMore={currentPage < pages}
+        
         loader={
-          <div className="flex flex-wrap gap-4 items-center justify-center">
+          <div className='flex flex-wrap gap-4 items-center justify-center'>
+            <ContentCardSkeleton></ContentCardSkeleton>
+            <ContentCardSkeleton></ContentCardSkeleton>
             <ContentCardSkeleton></ContentCardSkeleton>
             <ContentCardSkeleton></ContentCardSkeleton>
             <ContentCardSkeleton></ContentCardSkeleton>

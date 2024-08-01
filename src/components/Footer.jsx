@@ -16,7 +16,11 @@ function Footer() {
         <a href='' className=' hover:text-gray-300'>
           Privacy-Policy
         </a>
-        <a href='' className=' hover:text-gray-300'>
+        <a
+          href='https://github.com/anurag090697/FreshPotato/blob/main/README.md'
+          target='blank'
+          className=' hover:text-gray-300'
+        >
           About
         </a>
         <a href='' className=' hover:text-gray-300'>
@@ -28,36 +32,38 @@ function Footer() {
       </div>
       <div className='w-3/5 text-center text-gray-400'>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
+          FreshPotato is a modern web application showcasing advanced features
+          such as skeleton loading, infinite scrolling, Redux for state
+          management, and Tailwind CSS for styling. This project demonstrates
+          efficient user interface techniques and scalable front-end
+          architecture.
         </p>
       </div>
       <div className='flex items-center justify-between gap-6 text-3xl'>
         <a
-          href=''
+          href='https://www.instagram.com/im__niks/'
+          target='blank'
           className='bg-indigo-800 p-3 rounded-full hover:shadow-[0_0_10px_rgba(236,72,153,0.5)] hover:text-rose-400 transition-all duration-300'
         >
           <GrInstagram />
         </a>
         <a
-          href=''
+          href='https://www.facebook.com/cool.niks213'
+          target='blank'
           className='bg-indigo-800 p-3 rounded-full hover:shadow-[0_0_10px_rgba(236,72,153,0.5)] hover:text-rose-400 transition-all duration-300'
         >
           <FaFacebook />
         </a>
         <a
           className='bg-indigo-800 p-3 rounded-full hover:shadow-[0_0_10px_rgba(236,72,153,0.5)] hover:text-rose-400 transition-all duration-300'
-          href='
-              '
+          href='https://github.com/anurag090697'
+          target='blank'
         >
           <FaGithub />
         </a>
         <a
-          href=''
+          href='https://www.linkedin.com/in/anurag-shukla-31b70421b/'
+          target='blank'
           className='bg-indigo-800 p-3 rounded-full hover:shadow-[0_0_10px_rgba(236,72,153,0.5)] hover:text-rose-400 transition-all duration-300'
         >
           <FaLinkedinIn />

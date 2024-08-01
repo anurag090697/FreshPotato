@@ -13,6 +13,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import ContentCardSkeleton from "./CardSkeleton";
+import Skeleton from "react-loading-skeleton";
+import profile from "../../public/profile.jpeg";
 const img_base_path = "https://image.tmdb.org/t/p/original/";
 
 function DetailedInfo(props) {
@@ -34,11 +36,17 @@ function DetailedInfo(props) {
     );
   }, [contentname]);
 
-  const { contentDetailed, similarcontent, recommendedcontent, status, error } =
-    useSelector((state) => state.movieReducer);
+  const {
+    contentDetailed,
+    similarcontent,
+    recommendedcontent,
+    credits,
+    status,
+    error,
+  } = useSelector((state) => state.movieReducer);
 
   // console.log(contentDetailed, similarcontent, recommendedcontent, contentid);
-  // console.log(contentDetailed);
+  // console.log(recommendedcontent);
 
   function ratingnum() {
     let rp = (Number(data.vote_average) / 10) * 100;
@@ -55,19 +63,89 @@ function DetailedInfo(props) {
 
   if (status === "loading") {
     return (
-      <div className='flex flex-wrap gap-32 items-center justify-center'>
-        <ContentCardSkeleton></ContentCardSkeleton>
-        <ContentCardSkeleton></ContentCardSkeleton>
-        <ContentCardSkeleton></ContentCardSkeleton>
-        <ContentCardSkeleton></ContentCardSkeleton>
-        <ContentCardSkeleton></ContentCardSkeleton>
-        <ContentCardSkeleton></ContentCardSkeleton>
+      <div className='py-20'>
+        <div className='flex flex-wrap gap-32 items-center justify-center'>
+          {" "}
+          <Skeleton
+            width={300}
+            height={350}
+            enableAnimation='true'
+            baseColor='silver'
+            highlightColor='gray'
+            direction='ltr'
+          ></Skeleton>
+          <div className='flex flex-col '>
+            {" "}
+            <Skeleton
+              className='my-6'
+              width={600}
+              enableAnimation='true'
+              baseColor='silver'
+              highlightColor='gray'
+              direction='ltr'
+              count={5}
+            ></Skeleton>
+          </div>
+        </div>
+        <div>
+          <Skeleton
+            containerClassName='flex items-center justify-center gap-5'
+            className='my-10'
+            width={200}
+            circle={true}
+            height={200}
+            enableAnimation='true'
+            baseColor='silver'
+            highlightColor='gray'
+            direction='ltr'
+            count={5}
+          ></Skeleton>
+        </div>
+        <div className='my-16'>
+          <div>
+            {" "}
+            <Skeleton
+              width={220}
+              height={300}
+              enableAnimation='true'
+              baseColor='silver'
+              highlightColor='gray'
+              direction='ltr'
+              count={5}
+              containerClassName='flex gap-4 items-center justify-center w-full'
+            ></Skeleton>
+          </div>
+          <div>
+            {" "}
+            <Skeleton
+              width={220}
+              enableAnimation='true'
+              baseColor='silver'
+              highlightColor='gray'
+              direction='ltr'
+              containerClassName='flex gap-4 items-center justify-center w-full'
+              count={5}
+            ></Skeleton>
+          </div>
+          <div>
+            {" "}
+            <Skeleton
+              width={220}
+              enableAnimation='true'
+              baseColor='silver'
+              highlightColor='gray'
+              direction='ltr'
+              containerClassName='flex gap-4 items-center justify-center w-full'
+              count={5}
+            ></Skeleton>
+          </div>
+        </div>
       </div>
     );
   }
   if (status === "failed") {
     return (
-      <div className='min-h-dvh text-center w-full text-3xl text-violet-800'>
+      <div className='min-h-dvh flex items-center justify-center w-full text-3xl text-violet-800'>
         An Error Occured Try Again
       </div>
     );
@@ -179,9 +257,67 @@ function DetailedInfo(props) {
             )}
           </div>
         </div>
+        <div className='w-10/12 mx-auto py-20'>
+          <h2 className='text-3xl text-white ml-8 py-6'>CAST</h2>
+          <Swiper
+            className=''
+            modules={[Navigation, Pagination]}
+            spaceBetween={20}
+            slidesPerView={5}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+              1280: {
+                slidesPerView: 5,
+              },
+            }}
+          >
+            {credits
+              ? credits.map((ele, idx) => {
+                  return (
+                    <SwiperSlide key={idx}>
+                      <div className='flex flex-col items-center justify-center text-xl text-sky-400'>
+                        <div className='overflow-hidden rounded-full'>
+                          {" "}
+                          <img
+                            src={
+                              ele.profile_path
+                                ? img_base_path + ele.profile_path
+                                : profile
+                            }
+                            alt=''
+                            className='w-56 rounded-full object-cover h-56 grayscale hover:scale-110 hover:grayscale-0'
+                          />
+                        </div>
+                        <div className='text-center flex flex-col items-center justify-center gap-4 py-2'>
+                          <h3>{ele.name || "Not Available"}</h3>
+                          <h3>{ele.character || "Not Available"}</h3>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  );
+                })
+              : ""}
+          </Swiper>
+        </div>
         <div>
           <h2 className='ml-32 mt-8 text-3xl text-white uppercase'>
-            SIMILAR {data.media_type === "movie" ? "movie" : "tv show"}s
+            {similarcontent
+              ? data.media_type === "movie"
+                ? "SIMILAR MOVIES"
+                : data.release_date
+                ? "SIMILAR MOVIES"
+                : "SIMILAR TV SHOWS"
+              : ""}
           </h2>
           <div className='my-14 w-10/12 mx-auto flex gap-6'>
             {/* {similarcontent

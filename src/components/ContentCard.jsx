@@ -82,14 +82,14 @@ function ContentCard(props) {
   // console.log(data);
   return (
     <div
-      className='w-60 h-[520px] rounded-lg border-violet-500 overflow-hidden'
+      className='w-60 h-[520px] rounded-lg border-gray-200 overflow-hidden flex flex-col '
       onClick={() =>
         navigate(`/searched/${data.title || data.name}/detailed`, {
           state: { data },
         })
       }
     >
-      <div className='relative pb-8'>
+      <div className='relative pb-8 '>
         <img
           className='rounded-lg'
           src={

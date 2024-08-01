@@ -8,7 +8,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 export const fetchtopratedcontent = createAsyncThunk(
   "fetchtoprated",
-  async (_,{ rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const [movies, tvshows] = await Promise.all([
         axios.get(
@@ -45,8 +45,8 @@ export const fetchPopularContent = createAsyncThunk(
         popularTvShows: popularTvShows.data.results,
       };
     } catch (error) {
-      console.error('Error fetching popular content:', error);
-      return rejectWithValue(error.response?.data || 'An error occurred');
+      console.error("Error fetching popular content:", error);
+      return rejectWithValue(error.response?.data || "An error occurred");
     }
   }
 );
@@ -69,7 +69,7 @@ export const fetchTrendingContent = createAsyncThunk(
         trendingWeek: week.data.results,
       };
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'An error occurred');
+      return rejectWithValue(error.response?.data || "An error occurred");
     }
   }
 );
@@ -107,7 +107,7 @@ export const detailedContent = createAsyncThunk(
   "detailedContent",
   async ({ contentId, contentType }, { rejectWithValue }) => {
     try {
-      const [infos, similar, recommended] = await Promise.all([
+      const [infos, similar, recommended, credits] = await Promise.all([
         axios.get(
           `https://api.themoviedb.org/3/${contentType}/${contentId}?api_key=${API_KEY}`
         ),
@@ -117,11 +117,15 @@ export const detailedContent = createAsyncThunk(
         axios.get(
           `https://api.themoviedb.org/3/${contentType}/${contentId}/recommendations?api_key=${API_KEY}`
         ),
+        axios.get(
+          `https://api.themoviedb.org/3/${contentType}/${contentId}/credits?api_key=${API_KEY}`
+        ),
       ]);
       return {
         contentDetailed: infos.data,
         similarcontent: similar.data.results,
         recommendedcontent: recommended.data.results,
+        credits: credits.data.cast,
       };
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -149,6 +153,7 @@ const slice = createSlice({
   initialState: {
     searchResults: [],
     contentDetailed: [],
+    credits: [],
     similarcontent: [],
     recommendedcontent: [],
     topratedmovies: [],
@@ -184,6 +189,7 @@ const slice = createSlice({
         state.contentDetailed = action.payload.contentDetailed;
         state.similarcontent = action.payload.similarcontent;
         state.recommendedcontent = action.payload.recommendedcontent;
+        state.credits = action.payload.credits;
       })
       .addCase(detailedContent.rejected, (state, action) => {
         state.status = "failed";

@@ -7,18 +7,27 @@ FreshPotato is a modern web application showcasing advanced features such as ske
 ## Features
 
 - **Skeleton Loading:** Enhance user experience by providing visual feedback during data loading.
-- **Infinite Scrolling:** Seamlessly load more content as the user scrolls, improving performance and user engagement.
 - **Redux:** Manage application state predictably and efficiently with Redux.
 - **Swiper:** Integrate touch-friendly sliders for a smooth user experience on mobile devices.
 - **Tailwind CSS:** Utilize Tailwind CSS for a highly customizable and responsive design.
+- **Search:** Effortlessly search for movies and TV shows using the search bar.
+- **Browse:** Explore dedicated pages for both movies and TV shows, featuring infinite scrolling for continuous content discovery.
+- **Detailed Information:** Dive deep into individual movies and TV shows with detailed information cards showcasing ratings and more.
+- **Seamless Navigation:** Navigate between movie and TV show sections effortlessly using the dedicated buttons in the navbar.
+- **Infinite Scrolling:** Enjoy a seamless browsing experience with infinite scrolling that automatically loads more content as you scroll down.
+- **Routing:** Leverage built-in routing to navigate between search results, movie pages, and TV show pages.
 
 ## Usage
 
+- **Visit the application:** Access FreshPotato at [https://fresh-potato.vercel.app/](https://fresh-potato.vercel.app/).
 - **Skeleton Loading:** Components with skeleton loading will be displayed while the actual content is being fetched.
 - **Infinite Scrolling:** Scroll down to trigger loading more content automatically.
 - **Redux:** Application state is managed using Redux. Actions, reducers, and store configurations are located in the `src/redux` directory.
 - **Swiper:** Use the Swiper component to create touch-responsive sliders.
 - **Tailwind CSS:** Custom styles and themes can be adjusted in the `tailwind.config.js` file.
+- **Search:** Use the search bar to find specific movies or TV shows.
+- **Browse:** Navigate to the Movies or TV Shows page using the dedicated buttons in the navbar.
+- **Explore Details:** Click on a movie or TV show card to view its detailed information.
 
 ## Contributing
 
