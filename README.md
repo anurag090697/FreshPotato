@@ -20,6 +20,7 @@ FreshPotato is a modern web application showcasing advanced features such as ske
 ## Usage
 
 - **Visit the application:** Access FreshPotato at [https://fresh-potato.vercel.app/](https://fresh-potato.vercel.app/).
+  (note- api used in this app does not work on jio networks.)
 - **Skeleton Loading:** Components with skeleton loading will be displayed while the actual content is being fetched.
 - **Infinite Scrolling:** Scroll down to trigger loading more content automatically.
 - **Redux:** Application state is managed using Redux. Actions, reducers, and store configurations are located in the `src/redux` directory.
