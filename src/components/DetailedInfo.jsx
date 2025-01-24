@@ -145,7 +145,7 @@ function DetailedInfo(props) {
   }
   if (status === "failed") {
     return (
-      <div className='min-h-dvh flex items-center justify-center w-full text-3xl text-violet-800'>
+      <div className='h-dvh flex items-center justify-center w-full text-3xl text-rose-600'>
         An Error Occured Try Again
       </div>
     );
@@ -158,10 +158,10 @@ function DetailedInfo(props) {
       }}
     >
       <div className='w-full h-full bg-black/70 pt-20'>
-        <div className='flex py-10 items-center justify-start gap-10 px-20 w-full'>
-          <div className='w-96'>
+        <div className='flex py-10 items-center justify-center md:justify-start flex-wrap lg:flex-nowrap gap-10 px-4 md:px-20 w-full'>
+          <div className=' min-w-64 sm:min-w-96'>
             <img
-              className='rounded-xl object-cover object-top max-w-96 max-h-[450px]'
+              className='rounded-xl object-cover object-top max-h-[450px]'
               src={
                 contentDetailed.poster_path
                   ? `${img_base_path}${contentDetailed.poster_path}`
@@ -170,7 +170,7 @@ function DetailedInfo(props) {
               alt={contentDetailed.title}
             />
           </div>
-          <div className=' text-white flex flex-col gap-4 select-none pt-5'>
+          <div className=' text-white flex flex-col items-center justify-center md:items-start gap-4 select-none pt-5'>
             <h2 className=' text-3xl'>
               {contentDetailed.title ||
                 contentDetailed.original_title ||
@@ -206,15 +206,15 @@ function DetailedInfo(props) {
                 </div>
               </div>
             </div>
-            <h2 className=' text-2xl'>Overview</h2>
-            <p>
+            <h2 className='text-xl md:text-2xl'>Overview</h2>
+            <p className="text-xs md:text-lg w-full text-wrap">
               {contentDetailed.overview ? (
                 contentDetailed.overview
               ) : (
                 <span className='text-red-700'> No overview available</span>
               )}
             </p>
-            <div className='flex gap-6'>
+            <div className='flex gap-2 md:gap-6 flex-wrap'>
               <h4>
                 Status:{" "}
                 <span className='text-gray-400 ml-2'>
@@ -257,7 +257,7 @@ function DetailedInfo(props) {
             )}
           </div>
         </div>
-        <div className='w-10/12 mx-auto py-20'>
+        <div className='w-full px-6 sm:px-2 sm:w-10/12 mx-auto py-20'>
           {credits.cast ? (
             <h2 className='text-3xl text-white ml-8 py-6'>CAST</h2>
           ) : (
@@ -267,20 +267,26 @@ function DetailedInfo(props) {
             className=''
             modules={[Navigation, Pagination]}
             spaceBetween={20}
-            slidesPerView={5}
+            slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
             breakpoints={{
-              640: {
-                slidesPerView: 2,
+              520: {
+                slidesPerView: 1,
+                spaceBetween: 6,
               },
-              768: {
-                slidesPerView: 3,
+              740: {
+                slidesPerView: 2,
+                spaceBetween: 6,
               },
               1024: {
-                slidesPerView: 4,
+                slidesPerView: 3,
+                spaceBetween: 10,
               },
               1280: {
+                slidesPerView: 4,
+              },
+              1680: {
                 slidesPerView: 5,
               },
             }}
@@ -314,7 +320,7 @@ function DetailedInfo(props) {
           </Swiper>
         </div>
         <div>
-          <h2 className='ml-32 mt-8 text-3xl text-white uppercase'>
+          <h2 className='mx-auto w-fit sm:ml-32 mt-8 text-xl sm:text-3xl text-white uppercase'>
             {similarcontent
               ? data.media_type === "movie"
                 ? "SIMILAR MOVIES"
@@ -338,20 +344,26 @@ function DetailedInfo(props) {
               className=''
               modules={[Navigation, Pagination]}
               spaceBetween={20}
-              slidesPerView={5}
+              slidesPerView={1}
               navigation
               pagination={{ clickable: true }}
               breakpoints={{
-                640: {
-                  slidesPerView: 2,
+                520: {
+                  slidesPerView: 1,
+                  spaceBetween: 6,
                 },
-                768: {
-                  slidesPerView: 3,
+                740: {
+                  slidesPerView: 2,
+                  spaceBetween: 6,
                 },
                 1024: {
-                  slidesPerView: 4,
+                  slidesPerView: 3,
+                  spaceBetween: 10,
                 },
                 1280: {
+                  slidesPerView: 4,
+                },
+                1680: {
                   slidesPerView: 5,
                 },
               }}
@@ -378,7 +390,7 @@ function DetailedInfo(props) {
         </div>
         <hr className='mx-20' />
         <div>
-          <h2 className='ml-32 mt-8 text-3xl text-white uppercase'>
+          <h2 className='mx-auto w-fit sm:ml-32 mt-8 text-xl sm:text-3xl text-white uppercase'>
             {" "}
             recommendations
           </h2>
@@ -396,20 +408,26 @@ function DetailedInfo(props) {
               className=''
               modules={[Navigation, Pagination]}
               spaceBetween={20}
-              slidesPerView={5}
+              slidesPerView={1}
               navigation
               pagination={{ clickable: true }}
               breakpoints={{
-                640: {
-                  slidesPerView: 2,
+                520: {
+                  slidesPerView: 1,
+                  spaceBetween: 6,
                 },
-                768: {
-                  slidesPerView: 3,
+                740: {
+                  slidesPerView: 2,
+                  spaceBetween: 6,
                 },
                 1024: {
-                  slidesPerView: 4,
+                  slidesPerView: 3,
+                  spaceBetween: 10,
                 },
                 1280: {
+                  slidesPerView: 4,
+                },
+                1680: {
                   slidesPerView: 5,
                 },
               }}

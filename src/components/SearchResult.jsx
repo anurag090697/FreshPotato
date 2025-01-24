@@ -53,7 +53,7 @@ function SearchResult() {
   }
   return (
     <div>
-      <div className='flex items-center justify-center flex-wrap gap-16 px-20 py-10 pt-32'>
+      <div className='flex items-center justify-center flex-wrap gap-16 px-5 sm:px-20 py-10 pt-32'>
         {searchResults.map((result, idx) => (
           <ContentCard data={result} key={idx}>
             {" "}

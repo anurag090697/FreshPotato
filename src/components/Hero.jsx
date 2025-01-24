@@ -47,35 +47,32 @@ function Hero(props) {
   }
   return (
     <div
-      className=' w-full bg-cover bg-top Class 
-Properties
-bg-repeat	background-repeat: repeat;
-bg-no-repeat'
+      className=' w-full bg-cover bg-top Class Properties bg-no-repeat'
       style={{
         backgroundImage: `url(${picslide ? picslide[picidx] : ""})`,
       }}
     >
-      <div className='flex flex-col w-full items-center text-center gap-10 bg-gradient-to-r from-indigo-900/50 to-violet-900/40 justify-center py-52 text-white md:min-h-dvh'>
+      <div className='flex flex-col w-full items-center text-center gap-10 bg-gradient-to-r from-indigo-900/50 to-violet-900/40 justify-center py-32 sm:py-52 text-white md:min-h-dvh'>
         <div>
-          <h1 className='font-bold text-6xl'>Welcome.</h1>
-          <p className='font-medium text-gray-300 text-2xl'>
+          <h1 className='font-bold text-2xl sm:text-6xl'>Welcome.</h1>
+          <p className='font-medium text-gray-300 text-lg sm:text-2xl'>
             Millions of movies, TV shows and people to discover. Explore now.
           </p>
         </div>
-        <div className='w-full py-3'>
+        <div className='w-full py-3 px-2 sm:px-0'>
           <form
             action='submit'
             onSubmit={(e) => handleSubmit(e)}
-            className='flex items-center justify-center'
+            className='flex items-center justify-center text-xl sm:text-2xl'
           >
             <input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.currentTarget.value)}
               type='text'
-              className='p-3 w-3/5 rounded-ss-2xl rounded-es-2xl text-2xl font-medium px-6 text-gray-600 outline-none'
+              className=' p-2 sm:p-3 w-3/5 rounded-ss-2xl rounded-es-2xl  font-medium px-6 text-gray-600 outline-none'
               placeholder='Search For Any Movie Or TV Show.....'
             />
-            <button className='text-white bg-gradient-to-r from-amber-300 to-orange-500 text-2xl font-medium py-3 px-5 rounded-se-2xl rounded-ee-2xl hover:from-orange-500 hover:to-yellow-500'>
+            <button className='text-white bg-gradient-to-r from-amber-300 to-orange-500 font-medium py-2 sm:py-3 px-5 rounded-se-2xl rounded-ee-2xl hover:from-orange-500 hover:to-yellow-500'>
               Search
             </button>
           </form>

@@ -9,7 +9,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 function Footer() {
   return (
     <footer className='bg-indigo-900 w-full py-10 text-white flex flex-col gap-8 items-center font-medium'>
-      <div className='flex items-center justify-between gap-6 text-xl'>
+      <div className='flex items-center justify-center sm:justify-between flex-wrap gap-6 text-xl'>
         <a href='' className=' hover:text-gray-300'>
           Terms Of Use{" "}
         </a>

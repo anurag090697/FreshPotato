@@ -99,8 +99,8 @@ function TvShows() {
             </div>
           ) : (
             <div
-              className={`text-center text-red-600 text-2xl py-10${
-                tvshows.length ? "" : "min-h-dvh"
+              className={`text-center text-red-600 text-2xl py-10 min-h-dvh${
+                tvshows.length ? "" : ""
               }`}
             >
               No more TV shows to display
@@ -108,7 +108,7 @@ function TvShows() {
           )
         }
       >
-        <div className='flex gap-6 flex-wrap items-center justify-center px-20'>
+        <div className='flex gap-6 flex-wrap items-center justify-center px-5 sm:px-20'>
           {data.map((element, index) => (
             <ContentCard data={element} key={index} media={"tv"}></ContentCard>
           ))}

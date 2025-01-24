@@ -96,16 +96,16 @@ function Movies() {
             </div>
           ) : (
             <div
-              className={`text-center text-red-600 text-2xl py-10${
-                movies.length ? "" : "min-h-dvh"
+              className={`text-center text-red-600 text-2xl py-10 min-h-dvh ${
+                movies.length ? "" : ""
               }`}
             >
-              No more TV shows to display
+              No more Movies to display
             </div>
           )
         }
       >
-        <div className='flex gap-6 flex-wrap items-center justify-center px-20'>
+        <div className='flex gap-6 flex-wrap items-center justify-center px-5 sm:px-20'>
           {data.map((element, index) => (
             <ContentCard
               data={element}

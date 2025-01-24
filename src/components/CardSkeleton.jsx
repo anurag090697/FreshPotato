@@ -5,7 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 function ContentCardSkeleton() {
   return (
-    <div className='w-60 h-[520px] rounded-lg border-violet-500 overflow-hidden '>
+    <div className='w-60 h-[520px] rounded-lg border-violet-500 overflow-hidden mx-auto'>
       <div className='relative pb-8 '>
         <Skeleton
           height={300}

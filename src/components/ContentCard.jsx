@@ -81,7 +81,7 @@ function ContentCard(props) {
   // console.log(data);
   return (
     <div
-      className='w-60 h-[520px] rounded-lg border-gray-200 overflow-hidden flex flex-col '
+      className='w-56 sm:w-60 h-[520px] rounded-lg border-gray-200 overflow-hidden flex flex-col mx-auto '
       onClick={() =>
         navigate(`/searched/${data.title || data.name}/detailed`, {
           state: { data },

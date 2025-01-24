@@ -49,21 +49,21 @@ function Header() {
 
   return (
     <header
-      className={`z-30 fixed w-full top-0 transition-transform duration-300 ${
+      className={`z-30 fixed w-full right-0 top-0 transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className='bg-gradient-to-r from-gray-500/50 to-cyan-500/50 w-full flex px-20 py-1 items-center justify-between text-2xl font-medium text-white '>
+      <nav className='bg-gradient-to-r from-gray-500/50 to-cyan-500/50 w-full flex px-2 sm:px-20 py-1 items-center justify-between text-sm sm:text-2xl font-medium text-white '>
         <NavLink to='/'>
           <img
             src={logo}
             alt='MovieFlix Logo'
-            className='w-20 md:w-28 animate-pulse hover:animate-none'
+            className='w-14 md:w-28 animate-pulse hover:animate-none'
           />
         </NavLink>
 
-        <div className='flex items-center justify-between gap-8'>
-          <div className='text-xs md:text-xl flex gap-6'>
+        <div className='flex items-center justify-between gap-2 sm:gap-8'>
+          <div className='flex gap-3 sm:gap-6'>
             <NavLink
               to='/movies'
               className={({ isActive }) => (isActive ? "text-rose-500" : "")}
@@ -85,7 +85,7 @@ function Header() {
       </nav>
       {visibility && (
         <div
-          className='px-40 relative flex z-20 bg-gray-300 my-4'
+          className='px-10 md:px-40 relative flex z-20 w-full bg-gray-300 my-4'
           id='extraSearch'
         >
           <form
@@ -102,7 +102,7 @@ function Header() {
             />
           </form>
 
-          <button className='text-3xl' onClick={() => setVisibility(false)}>
+          <button className='text-xl sm:text-3xl' onClick={() => setVisibility(false)}>
             <IoIosCloseCircle />
           </button>
         </div>

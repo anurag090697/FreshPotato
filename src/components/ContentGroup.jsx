@@ -12,9 +12,9 @@ function ContentGroup(props) {
   const [option, setOption] = useState(true);
   // console.log(props.data1)
   return (
-    <div className='w-full px-28 py-20 min-h-96'>
-      <div className='flex items-center justify-between'>
-        <h2 className='text-2xl text-white'>{props.heading}</h2>
+    <div className='w-full flex flex-col items-center justify-center px-4 ms:px-14 lg:px-28 py-20 min-h-96'>
+      <div className='flex items-center justify-between w-full'>
+        <h2 className='text-lg sm:text-2xl text-white'>{props.heading}</h2>
         <div
           className='flex items-center justify-around w-fit text-sm bg-white px-2 py-1 rounded-3xl cursor-pointer select-none'
           onClick={() => setOption(!option)}
@@ -44,25 +44,31 @@ function ContentGroup(props) {
           return <ContentCard data={ele} key={idx}></ContentCard>;
         }) : ""}
       </div> */}
-      <div className='py-8'>
+      <div className='py-8 w-full'>
         <Swiper
           className={option ? "" : "hidden"}
           modules={[Navigation, Pagination]}
           spaceBetween={20}
-          slidesPerView={5}
+          slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
           breakpoints={{
-            640: {
-              slidesPerView: 2,
+            520: {
+              slidesPerView: 1,
+              spaceBetween: 6,
             },
-            768: {
-              slidesPerView: 3,
+            740: {
+              slidesPerView: 2,
+              spaceBetween: 6,
             },
             1024: {
-              slidesPerView: 4,
+              slidesPerView: 3,
+              spaceBetween: 10,
             },
             1280: {
+              slidesPerView: 4,
+            },
+            1680: {
               slidesPerView: 5,
             },
           }}
@@ -70,7 +76,7 @@ function ContentGroup(props) {
           {props.data1 ? (
             props.data1.map((ele, idx) => {
               return (
-                <SwiperSlide key={idx}>
+                <SwiperSlide key={idx} className=''>
                   <ContentCard data={ele} />
                 </SwiperSlide>
               );
@@ -90,21 +96,21 @@ function ContentGroup(props) {
           className={option ? "hidden" : ""}
           modules={[Navigation, Pagination]}
           spaceBetween={20}
-          slidesPerView={5}
+          slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
           breakpoints={{
-            640: {
+            520: {
+              slidesPerView: 1,
+            },
+            740: {
               slidesPerView: 2,
             },
-            768: {
+            1024: {
               slidesPerView: 3,
             },
-            1024: {
-              slidesPerView: 4,
-            },
             1280: {
-              slidesPerView: 5,
+              slidesPerView: 4,
             },
           }}
         >

@@ -17,7 +17,7 @@ import ContentCardSkeleton from "./components/CardSkeleton";
 function App() {
   return (
     <BrowserRouter>
-      <div className='container bg-gradient-to-t from-amber-900 to-violet-900 relative w-full scroll-smooth min-w-full'>
+      <div className='container bg-gradient-to-t from-amber-900 to-violet-900 relative w-full scroll-smooth min-w-full overflow-hidden'>
         <Header></Header>
         {/* {console.log(import.meta.env.VITE_TMDB_API_KEY)} */}
         <Routes>
